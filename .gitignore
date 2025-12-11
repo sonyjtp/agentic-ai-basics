@@ -126,24 +126,24 @@ dmypy.json
 .DS_Store
 .AppleDouble
 .LSOverride
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# IDE
-.idea/
-.vscode/
 *.swp
 *.swo
 *~
 .project
 .pydevproject
 .settings/
+.idea/
+
+# IDE
+.vscode/
 *.sublime-project
 *.sublime-workspace
 
-# OS specific
+# OS
 Thumbs.db
+
+# Project specific
+*.db
+output/
+data/
 
