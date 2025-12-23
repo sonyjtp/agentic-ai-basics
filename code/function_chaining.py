@@ -6,7 +6,7 @@ from langchain_groq import ChatGroq
 load_dotenv()
 # 1. Define the model
 model = ChatGroq(
-            model_name="llama-3.1-8b-instant",
+            model="llama-3.1-8b-instant",
             temperature=0.0
 )
 # 2. Define the prompts

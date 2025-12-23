@@ -23,7 +23,7 @@ def get_model(model: str):
 
     if model == "gpt-4o-mini":
         return ChatOpenAI(
-            model_name="gpt-4o-mini",
+            model="gpt-4o-mini",
             temperature=0.0,
             api_key=os.getenv("OPENAI_API_KEY"),
         )
@@ -41,7 +41,7 @@ def get_model(model: str):
         "openai/gpt-oss-20b",
     ]:
         return ChatGroq(
-            model_name=model,
+            model=model,
             temperature=0.0,
             api_key=os.getenv("GROQ_API_KEY"),
         )

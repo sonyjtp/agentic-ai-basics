@@ -7,7 +7,7 @@ ENV_FPATH = os.path.join(ROOT_DIR, ".env")
 CODE_DIR = os.path.join(ROOT_DIR, "code")
 
 APP_CONFIG_FPATH = os.path.join(CODE_DIR, "config", "config.yaml")
-# PROMPT_CONFIG_FPATH = os.path.join(CODE_DIR, "config", "prompt_config.yaml")
+PROMPT_CONFIG_FPATH = os.path.join(CODE_DIR, "config", "prompt_config.yaml")
 
 
 OUTPUTS_DIR = os.path.join(ROOT_DIR, "outputs")

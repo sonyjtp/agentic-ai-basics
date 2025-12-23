@@ -7,7 +7,7 @@
 # - qwen/qwen3-32b
 # - openai/gpt-oss-20b
 
-llm: "openai/gpt-oss-20b"
+llm: "llama-3.1-8b-instant"
 reasoning_strategies:
   CoT: |
     Use this systematic approach to provide your response:
@@ -32,3 +32,6 @@ reasoning_strategies:
     1. Break the main question into smaller sub-questions.
     2. Answer each sub-question thoroughly.
     3. Then, based on those answers, synthesize a clear and thoughtful final response.
+memory_strategies:
+  trimming_window_size: 6 # Number of messages to keep in trimming strategy (6 would be 3 pairs of Q/A)
+  summarization_max_tokens: 1000 # Max tokens before summarization kicks in
