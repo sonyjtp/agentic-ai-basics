@@ -5,6 +5,21 @@ from file_utils import load_yaml, load_publication
 from paths import PROMPT_CONFIG_FPATH
 from constants import PUBLICATION_CONTENT_HEADER
 
+"""
+    The Anatomy of a Good System Prompt
+    --------------------------------
+    A well-structured system prompt typically includes the following components:
+    1. Instructions: What the AI should do.
+    2. Input: The data or content the AI should work with.
+    3. Contextual Information: Any relevant background information or data the AI should consider.
+    4. Role Definition: Clearly defines the AI's role (e.g., "You are a helpful AI assistant.")
+    5. Style and Tone: Describes the desired communication style (e.g., "Use a friendly and professional tone.")
+    6. Output Format: Details the expected format of the response (e.g., "Provide answers in bullet points.")
+    7. Examples: Sample inputs and outputs to guide the AI's responses.
+    8. Goal: States the primary objective of the AI (e.g., "Assist users in understanding complex topics.")
+    9. Output Constraints: Specifies any limitations or rules for the output (e.g., "Avoid using technical jargon.")
+"""
+
 
 def lowercase_first_char(text: str) -> str:
     """Lowercases the first character of a string.

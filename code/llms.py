@@ -14,12 +14,13 @@ available_models = [
     "llama-3.3-70b-versatile",
     "qwen/qwen3-32b",
     "openai/gpt-oss-20b",
+    "openai/gpt-oss-120b"
 ]
 
 
 def get_model(model: str):
     if model not in available_models:
-        raise ValueError(f"Invalid model. Available models: {available_models.keys()}")
+        raise ValueError(f"Invalid model. Available models: {available_models}")
 
     if model == "gpt-4o-mini":
         return ChatOpenAI(
@@ -39,9 +40,11 @@ def get_model(model: str):
         "llama-3.3-70b-versatile",
         "qwen/qwen3-32b",
         "openai/gpt-oss-20b",
+        "openai/gpt-oss-120b"
     ]:
         return ChatGroq(
             model=model,
             temperature=0.0,
             api_key=os.getenv("GROQ_API_KEY"),
         )
+    return None
