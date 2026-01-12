@@ -18,6 +18,10 @@ available_models = [
 ]
 
 
+def get_available_models():
+    return available_models
+
+
 def get_model(model: str):
     if model not in available_models:
         raise ValueError(f"Invalid model. Available models: {available_models}")

@@ -1,14 +1,15 @@
 import os
+from typing import Any
 
 import tiktoken
 from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
-from langchain_groq import ChatGroq
 
+import llms
 from constants import PUBLICATION_CONTENT_HEADER, PUBLICATION_CONTENT_FOOTER
-from prompt_builder import load_system_prompts
-from paths import APP_CONFIG_FPATH, DATA_DIR, OUTPUTS_DIR
 from file_utils import load_yaml, save_text_to_file
+from paths import APP_CONFIG_FPATH, DATA_DIR, OUTPUTS_DIR
+from prompt_builder import load_system_prompts
 from str_utils import capitalize_first_char
 
 
@@ -184,7 +185,7 @@ def apply_strategy(strategy, conversation_history) -> list:
             raise ValueError(f"Unknown strategy: {strategy}")
     return curr
 
-def run_conversation_using_memory_strategy(strategy: str, user_questions: list[str]) -> dict:
+def run_conversation_using_memory_strategy(strategy: str, user_questions: list[str]):
     """Runs a conversation using the specified memory strategy and user questions."""
     max_tokens_before_summarization = memory_cfg.get("summarization_max_tokens", 1000)
     print(f"\n🔧 Running {strategy.upper()} strategy on {len(user_questions)} questions")
@@ -264,20 +265,24 @@ def load_questions() -> list[str]:
     return user_questions
 
 
-def bootstrap() -> tuple[dict, ChatGroq, str, list[str], list[str]]:
+def bootstrap() -> tuple[dict, Any, str, list[str]]:
     """Bootstraps the LLM and system prompts for the AI assistant application.
     Returns:
         tuple: A tuple containing the initialized ChatGroq LLM instance and the system prompt string.
     """
     load_dotenv()
     app_cfg = load_yaml(APP_CONFIG_FPATH)
-    print("✓ Application configuration loaded.")
-    llm_client = ChatGroq(
-        model=app_cfg.get("llm", "llama-3.1-8b-instant"),
-        temperature=0.7,
-        api_key=os.getenv("GROQ_API_KEY"),
-    )
-    print("✓ LLM client initialized.")
+    print("✓ Application configuration loaded.\n")
+    print(" Available LLM models:")
+    available_models = llms.get_available_models()
+    for idx, model in enumerate(available_models, start=1):
+        print(f" - {idx}. {model}")
+    llm_choice = input("Select an LLM model (default = llama-3.1-8b-instant): ").strip()
+    llm_str = available_models[int(llm_choice)-1] if (llm_choice.isdigit()
+        and 1 <= int(llm_choice) <= len(available_models))  \
+            else app_cfg.get("llm", "llama-3.1-8b-instant")
+    llm_client = llms.get_model(llm_str)
+    print(f"✓ LLM client '{llm_str}' initialized.\n")
     sys_prompts = load_system_prompts(
         key="ai_assistant_system_prompt_advanced",
         publication_external_id="yzN0OCQT7hUS"
@@ -285,12 +290,13 @@ def bootstrap() -> tuple[dict, ChatGroq, str, list[str], list[str]]:
     print("✓ System prompts loaded.")
     memory_strategies = ["stuffing", "trimming", "summarization"]
     print("✓ Memory strategies defined.")
-    return app_cfg, llm_client, sys_prompts, memory_strategies, load_questions()
+    return app_cfg, llm_client, sys_prompts, memory_strategies
 
 
 if __name__ == "__main__":
     print("Bootstrapping App Config, LLM and system prompts...")
-    app_config, llm, system_prompts, strategies, questions = bootstrap()
+    app_config, llm, system_prompts, strategies = bootstrap()
+    questions = load_questions()
     memory_cfg = app_config.get("memory_strategies", {})
     system_msg = [SystemMessage(content=system_prompts)]
     print("Added system prompts to system message.")

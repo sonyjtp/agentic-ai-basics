@@ -16,22 +16,23 @@ Work through the examples in the order listed below. Each example builds on conc
 
 ### Intermediate Level
 
-4. **prompt_templates.py** - Create reusable prompt templates with variable substitution for different use cases.
-5. **prompt_builder.py** - Build dynamic prompts programmatically based on requirements.
-6. **structured_output.py** - Generate and validate structured output using Pydantic models.
+1. **structured_output.py** - Generate and validate structured output using Pydantic models.
+2. **prompt_templates.py** - Create reusable prompt templates with variable substitution for different use cases.
+3. **langchain_simple.py** - Demonstrates a simple LangChain pipeline for generating questions from a topic.
+4. **function_chaining.py** - Chain multiple function calls to solve complex problems step by step.
 
 ### Advanced Level
 
-7. **memory_strategies_example.py** - Apply memory strategies in a practical multi-turn conversation context.
-8. **function_chaining.py** - Chain multiple function calls to solve complex problems step by step.
-9. **step_by_step_rag_implementation.py** - Implement Retrieval-Augmented Generation (RAG) for knowledge-enhanced responses.
-10. **creating_a_vector_store.py** - Build and manage vector databases for semantic search and retrieval.
+1. **memory_strategies.py** - Apply memory strategies in a practical multi-turn conversation context.
+2. **step_by_step_rag_implementation.py** - Implement Retrieval-Augmented Generation (RAG) for knowledge-enhanced responses.
+3. **creating_a_vector_store.py** - Build and manage vector databases for semantic search and retrieval.
 
 ## Helper Modules & Configuration Files
 
 These utility modules and configuration files support the learning examples:
 
 - **llms.py** - LLM integration and model initialization utilities.
+- **prompt_builder.py** - Helper functions for constructing and validating prompts.
 - **memory_strategies.py** - Core implementations of memory management strategies (stuffing, trimming, summarization).
 - **chunking.py** - Text chunking utilities for preparing documents for embeddings.
 - **file_utils.py** - File I/O and document loading utilities.
@@ -72,4 +73,3 @@ These utility modules and configuration files support the learning examples:
 - **Vector Databases**: Storing and retrieving semantic embeddings
 - **Function Chaining**: Orchestrating multiple AI operations sequentially
 - **Agentic Patterns**: Building autonomous systems with AI agents
-

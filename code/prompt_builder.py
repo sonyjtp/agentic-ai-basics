@@ -138,7 +138,7 @@ def load_system_prompts(
                 append_value=f"{role.strip().lower()}.\n"
             )
         )
-        print("✓ Added role to system prompt.")
+        print("✓ Added role.")
     if tone := system_prompt_config.get("style_or_tone"):
         system_prompts.append(
             add_prefix(
@@ -146,7 +146,7 @@ def load_system_prompts(
                 append_value=tone
             )
         )
-        print("✓ Added style/tone to system prompt.")
+        print("✓ Added style/tone.")
 
     if constraints := system_prompt_config.get("output_constraints"):
         system_prompts.append(
@@ -155,7 +155,7 @@ def load_system_prompts(
                 append_value=constraints
             )
         )
-        print("✓ Added output constraints to system prompt.")
+        print("✓ Added output constraints.")
 
     if format_ := system_prompt_config.get("output_format"):
         system_prompts.append(
@@ -164,7 +164,7 @@ def load_system_prompts(
                 append_value=format_
             )
         )
-        print("✓ Added output format to system prompt.")
+        print("✓ Added output format.")
     if goal := system_prompt_config.get("goal"):
         system_prompts.append(
             add_prefix(
@@ -172,7 +172,7 @@ def load_system_prompts(
                 append_value=goal
             )
         )
-        print("✓ Added goal to system prompt.")
+        print("✓ Added goal.")
     if publication_external_id is not None:
         if publication := load_publication(publication_external_id):
             system_prompts.append(
@@ -181,7 +181,7 @@ def load_system_prompts(
                 f"{publication.strip()}\n"
                 f"{PUBLICATION_CONTENT_FOOTER}"
             )
-            print("✓ Added publication content to system prompt.")
+            print("✓ Added publication content.")
         else:
             raise ValueError(f"Publication for id {publication_external_id} not found")
     print("✓ System prompt construction complete.")
