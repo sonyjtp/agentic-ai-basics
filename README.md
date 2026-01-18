@@ -13,19 +13,18 @@ Work through the examples in the order listed below. Each example builds on conc
 1. **simple_prompt.py** - Learn how to craft effective prompts with proper context and input structure.
 2. **simple_prompt_from_publication.py** - Apply basic prompting to extract information from published content.
 3. **multiturn_conversation.py** - Build multi-turn conversation systems with context management.
+4. **prompt_templates.py** - Create reusable prompt templates with variable substitution for different use cases.
 
 ### Intermediate Level
 
 1. **structured_output.py** - Generate and validate structured output using Pydantic models.
-2. **prompt_templates.py** - Create reusable prompt templates with variable substitution for different use cases.
-3. **langchain_simple.py** - Demonstrates a simple LangChain pipeline for generating questions from a topic.
-4. **function_chaining.py** - Chain multiple function calls to solve complex problems step by step.
+2. **function_chaining.py** - Chain multiple function calls to solve complex problems step by step.
+3. **simple_vector_store.py** - Build and manage vector databases for semantic search and retrieval using Chroma.
 
 ### Advanced Level
 
 1. **memory_strategies.py** - Apply memory strategies in a practical multi-turn conversation context.
-2. **step_by_step_rag_implementation.py** - Implement Retrieval-Augmented Generation (RAG) for knowledge-enhanced responses.
-3. **creating_a_vector_store.py** - Build and manage vector databases for semantic search and retrieval.
+2. **rag_implementation.py** - Implement Retrieval-Augmented Generation (RAG) for knowledge-enhanced responses.
 
 ## Helper Modules & Configuration Files
 
@@ -35,10 +34,6 @@ These utility modules and configuration files support the learning examples:
 - **prompt_builder.py** - Helper functions for constructing and validating prompts.
 - **memory_strategies.py** - Core implementations of memory management strategies (stuffing, trimming, summarization).
 - **chunking.py** - Text chunking utilities for preparing documents for embeddings.
-- **file_utils.py** - File I/O and document loading utilities.
-- **str_utils.py** - String manipulation and processing utilities.
-- **paths.py** - Path management and configuration for data directories.
-- **constants.py** - Project-wide constants and configuration values.
 - **config/config.yaml** - Main configuration file for project settings.
 - **config/prompt_config.yaml** - Prompt templates and configurations.
 
